@@ -1,7 +1,8 @@
 <template>
     <nav class="navbar navbar-dark sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">CodeBricks</a>
+            <div class="navbar-brand" href="#"><img src="https://i.postimg.cc/9Fb9CqrS/bricks.jpg" alt="">
+            </div>
             <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
                 aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">
@@ -136,5 +137,11 @@ p {
     font-weight: bold;
     font-size: 11px;
     color: #FDE7E0;
+}
+
+img{
+    height:6.5vh;
+    width: 10vh;
+    margin-bottom: 1vh;
 }
 </style>

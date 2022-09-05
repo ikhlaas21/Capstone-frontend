@@ -4,7 +4,7 @@
       <div class="row">
         <div id="column1" class="col-md-6">
           <h1>Welcome to CodeBricks!</h1>
-          Sign up Today and upload yourself onto our brick-wall
+          Sign up Today and register yourself as a Freelancer on our wall!
           <br>
           <div class="cardo">
             <div class="cardo-img"><img src="https://i.postimg.cc/rmCTB1M4/codebricks.jpg" alt="">
@@ -36,13 +36,13 @@
                   <h2 class="">Login</h2>
                   <div class="row">
                     <div class="input-field col ">
-                      <input v-model="email" id="email" type="email" class="validate">
+                      <input v-model="logemail" id="email" type="email" class="validate">
                       <label for="email">Email</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col ">
-                      <input v-model="password" id="password" type="password" class="validate">
+                      <input v-model="loguserpassword" id="password" type="password" class="validate">
                       <label for="password">Password</label>
                     </div>
                   </div>
@@ -66,14 +66,14 @@
                   <div class="row">
                     
                     <div class="input-field col ">
-                      <input id="Fullname" type="text" class="validate">
+                      <input id="Fullname" v-model="fullname" type="text" class="validate">
                       <label for="Fullname">Fullname</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col ">
-                      <input id="email" type="email" class="validate">
-                      <label for="email">Email</label>
+                      <input id="remail" type="email" v-model="email" class="validate">
+                      <label for="remail">Email</label>
                     </div>
                   </div>
                   <div class="row">
@@ -84,8 +84,8 @@
                   </div>
                   <div class="row">
                     <div class="input-field col ">
-                      <input id="password" type="password" class="validate">
-                      <label for="password">Password</label>
+                      <input id="rpassword" type="password" v-model="userpassword" class="validate">
+                      <label for="rpassword">Password</label>
                     </div>
                   </div>
                   <div class="row">
@@ -95,7 +95,7 @@
                     </div>
                   </div>
                   <center>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                    <button class="btn waves-effect waves-light" @click="register" type="button" name="action">Submit</button>
                   </center>
                 </div>
                 <br>
@@ -119,18 +119,31 @@ export default {
   },
   data() {
     return {
+      fullname:"",
       email: "",
-      password: ""
+      logemail: "",
+      usertype:"",
+      userpassword: "",
+      loguserpassword: "",
     }
   },
   methods: {
     login() {
       const payload = {
-        email: this.email,
-        userpassword: this.password
+        email: this.logemail,
+        userpassword: this.loguserpassword
 
       }
       this.$store.dispatch("login", payload)
+    },
+    register(){
+      const payload = {
+        fullname:this.fullname,
+        email:this.email,
+        usertype:this.usertype,
+        userpassword:this.userpassword
+      }
+      this.$store.dispatch("register",payload)
     }
   }
 

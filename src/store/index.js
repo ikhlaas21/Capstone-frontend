@@ -48,8 +48,35 @@ export default createStore({
         .then((data) => {
           console.log(data)
           context.commit("stateUser", data.user)
-        
+          context.dispatch("checkProfile")
           console.log("signed in")
+        });
+    },
+
+
+    checkProfile(context){
+      fetch(`https://bizniz-api.herokuapp.com/listings/userlisting/${context.state.user.id}`)
+        .then(result => result.json())
+        .then((data) => console.log(data.results))
+    },
+
+
+
+    register(context, payload) {
+      console.log(payload);
+      fetch('https://bizniz-api.herokuapp.com/users', {
+          method: 'POST',
+          body: JSON.stringify(payload),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+          context.commit("stateUser", data.results)
+        
+          console.log("Registered successfully")
         });
     }
   },
