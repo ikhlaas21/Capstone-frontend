@@ -1,3 +1,5 @@
+import swal from 'sweetalert'
+import Swal from 'sweetalert2'
 import {
   createStore
 } from 'vuex'
@@ -46,19 +48,44 @@ export default createStore({
         })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
-          context.commit("stateUser", data.user)
-          context.dispatch("checkProfile")
-          console.log("signed in")
+          if(data.msg == "not found email was"){
+            swal({
+              icon:"error",
+              title:"Oops, incorrect email",
+              text:"Are you dumb fam?",
+              buttons:"Yes"
+            })
+          }else{
+            if(data.msg == "Incorrect your password was"){
+              swal({
+                icon:"error",
+                title:"Oops, incorrect password",
+                text:"Are you dumb fam?",
+                buttons:"Yes"
+
+              })
+            }else{
+              swal({
+                icon:"success",
+                title:`Thanks  ${data.user.fullname} for joining CodeBricks!`
+              })
+              console.log(data.token)
+              console.log(data.user);
+              context.commit("stateUser", data.user)
+              // context.dispatch("checkProfile")
+              console.log("signed in")
+            }
+          }
+   
         });
     },
 
 
-    checkProfile(context){
-      fetch(`https://bizniz-api.herokuapp.com/listings/userlisting/${context.state.user.id}`)
-        .then(result => result.json())
-        .then((data) => console.log(data.results))
-    },
+    // checkProfile(context){
+    //   fetch(`https://bizniz-api.herokuapp.com/listings/userlisting/${context.state.user.id}`)
+    //     .then(result => result.json())
+    //     .then((data) => console.log(data.results))
+    // },
 
 
 
@@ -73,10 +100,25 @@ export default createStore({
         })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
-          context.commit("stateUser", data.results)
-        
-          console.log("Registered successfully")
+          if(data.msg == "Email already in use"){
+            swal({
+              icon:"error",
+              title:"Uhm this is awkward",
+              text:"Email already in use",
+              buttons:"OK"
+
+            });
+          }else{
+            swal({
+              icon:"success",
+              title:"Registered",
+              buttons:"OK"
+            });
+            console.log(data)
+            context.commit("stateUser", data.results)
+            console.log("Registered successfully")
+          }
+      
         });
     }
   },
