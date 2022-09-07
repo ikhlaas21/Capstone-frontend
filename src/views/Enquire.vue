@@ -5,15 +5,15 @@
       <div v-if="listing">
         <div id="container-floating">
           <div class="nd4 nds"><img class="reminder">
-            <a :href="listing[0].githubUrl" class="link" style="font-size:28px"><i class="bi bi-github"> </i></a>
+            <a :href="listing.githubUrl" class="link" style="font-size:28px"><i class="bi bi-github"> </i></a>
           </div>
     
           <div class="nd3 nds"><img class="reminder">
-            <a :href="listing[0].linkedinUrl" class="link" style="font-size:26px"><i class="bi bi-linkedin"></i></a>
+            <a :href="listing.linkedinUrl" class="link" style="font-size:26px"><i class="bi bi-linkedin"></i></a>
           </div>
     
           <div class="nd1 nds">
-            <a :href="listing[0].projectLink" class="link" style="font-size:26px"><i class="bi bi-link"></i></a>
+            <a :href="listing.projectLink" class="link" style="font-size:26px"><i class="bi bi-link"></i></a>
           </div>
     
           <div id="floating-button">
@@ -24,19 +24,19 @@
         </div>
         <div class="row">
           <div id="column1" class="col-md-6">
-            <h1 style="color:teal;font-weight:bold">{{  listing[0].listingName  }}'s Personal Details</h1>
+            <h1 style="color:teal;font-weight:bold">{{  listing.listingName  }}'s Personal Details</h1>
             <br>
             <div class="card p-3 m-3 mx-auto" style="width: 350px;">
-              <div class="back" id="test550" :style="`background: url(` + listing[0].listingUrl + `); background-repeat: no-repeat;background-size: cover; background-position: center;aspect-ratio:1/1; border:solid 7px teal;border-radius:10px`
+              <div class="back" id="test550" :style="`background: url(` + listing.listingUrl + `); background-repeat: no-repeat;background-size: cover; background-position: center;aspect-ratio:1/1; border:solid 7px teal;border-radius:10px`
               ">
                 
               </div>
 
               <div class="card-body">
-                <h5 class="card-title">{{  listing[0].listingName  }}</h5>
+                <h5 class="card-title">{{  listing.listingName  }}</h5>
                 <hr>
-                {{  listing[0].listingDescription  }}
-                <br>Specialising in {{  listing[0].SpecialtyOption  }}<p></p>
+                {{  listing.listingDescription  }}
+                <br>Specialising in {{  listing.SpecialtyOption  }}<p></p>
 
               </div>
             </div>
@@ -57,7 +57,7 @@
                   <h4 class="description" style="font-family:'Times New Roman', Times, serif"><u>About me</u></h4>
                   <p class="description">
                     
-                    {{listing[0].personDescription}}
+                    {{listing.personDescription}}
                   </p>
                 </div>
               </div>

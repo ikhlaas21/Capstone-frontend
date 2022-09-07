@@ -6,8 +6,9 @@
           <h1>Welcome to CodeBricks!</h1>
           Sign up Today and register yourself as a Freelancer on our wall!
           <br>
+          <img class="yrimg" src="https://i.postimg.cc/rmCTB1M4/codebricks.jpg" alt="">
           <div class="cardo">
-            <div class="cardo-img"><img src="https://i.postimg.cc/rmCTB1M4/codebricks.jpg" alt="">
+            <div class="cardo-img"><img src="https://i.postimg.cc/NMYsS5yW/IMG-1145.jpg" alt="">
             </div>
             <div class="cardo-info">
               <br>
@@ -152,6 +153,19 @@ export default {
 </script>
 
 <style scoped>
+
+.yrimg{
+    position: relative;
+    width: 350px;
+    height: 220px;
+    background-size: cover;
+    object-fit: cover;
+    /* display: flex;
+    align-self: flex-start; */
+    border-radius:10px;
+    border: 8px solid teal;
+}
+
 hr{
   color: teal;
   height: 1px;
@@ -264,8 +278,8 @@ h4 {
 /* From uiverse.io by @alexruix */
 /*Magic card*/
 .cardo {
-  width: 570px;
-  min-height: 0px;
+  /* width: 570px;
+  min-height: 0px; */
   background: #18ac9e;
   overflow: visible;
   box-shadow: 0 5px 20px 2px rgba(0, 0, 0, 0.1);
@@ -275,6 +289,8 @@ h4 {
   margin-top: 150px;
   border-radius: 10px;
   border: solid 8px teal;
+  object-fit:cover;
+  background-size: contain;
 
 }
 
@@ -294,11 +310,11 @@ img {
   /* --size: 200px;
   width: var(--size);
   height: var(--size); */
-  width: 200px;
-  height: 180px;
-  border-radius: 50%;
-  border: solid 10px teal;
-  margin-top: 15px;
+  width: 185px;
+  height: 220px;
+  border-radius: 10px;
+  border: solid 8px teal;
+  margin-top:20px;
   background-size: contain;
   /*transform: translateY(-50%);
  background: #42caff;

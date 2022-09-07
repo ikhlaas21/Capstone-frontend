@@ -1,8 +1,8 @@
 <template>
     <nav class="navbar navbar-dark sticky-top">
         <div class="container-fluid">
-            <div class="navbar-brand" href="#"><img src="https://i.postimg.cc/9Fb9CqrS/bricks.jpg" alt="">
-            </div>
+            <a class="navbar-brand" href="/"><img src="https://i.postimg.cc/MZrYVr8w/bricks-removebg-preview.png" alt="">
+            </a>
             <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
                 aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">
@@ -14,13 +14,13 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-                        <router-link to="/">Home</router-link>
-                        <router-link to="/about">About</router-link>
-                        <router-link to="/listings">listings</router-link>
-                        <router-link to="/userinfo/:id">User Profile</router-link>
+                        <router-link to="/">Home</router-link> 
+                        <router-link to="/listings">View Our Users</router-link>
+                        <router-link to="/userinfo">User Profile</router-link>
                         <router-link to="/admin">Admin</router-link>
 
                     </ul>
+                    <Footer></Footer>
 
                 </div>
             </div>
@@ -28,12 +28,12 @@
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-                    <span class=""><i class="bi bi-map" style="font-size:20px; ;"></i></span>
+                    <span  class=""><i class="bi bi-map" style="font-size:20px ;"> Navbar</i></span>
                 </button>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <span class=""><i class="bi bi-envelope-open" style="font-size:20px; ;"></i></span>
+                    <span class=""><i class="bi bi-envelope-open" style="font-size:20px; ;"> Enquiries</i></span>
                 </button>
             </div>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
@@ -60,8 +60,13 @@
     </div>
 </template>
 <script>
+   
+import Footer from './footer.vue';
 export default {
-
+    components:{
+    Footer,
+  
+}
 }
 </script>
 
@@ -72,6 +77,10 @@ nav {
     z-index: 100;
     height: 9vh;
 
+}
+::-webkit-scrollbar {
+  
+  width:0;
 }
 
 .navbar-brand {
@@ -103,7 +112,7 @@ nav a.router-link-exact-active {
 
 .navbar-toggler {
     height: 60px;
-    width: 50px;
+    width: 140px;
 }
 
 .offcanvas-title {
@@ -117,7 +126,7 @@ nav a.router-link-exact-active {
 
 .offcanvas-body {
     background-color: #ffffff;
-
+height: 50vh;
 }
 
 .lowernav {
@@ -125,6 +134,7 @@ nav a.router-link-exact-active {
     height: 15px;
     width: 100%;
     z-index: 100 !important;
+    
 
 
 }

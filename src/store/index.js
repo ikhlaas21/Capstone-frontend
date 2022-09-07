@@ -12,8 +12,8 @@ export default createStore({
   },
   getters: {},
   mutations: {
-    stateListing(state, listing) {
-      state.listings = listing
+    stateListing(state, listings) {
+      state.listings = listings
     },
     stateSingleListing(state, listing) {
       state.listing = listing
@@ -23,6 +23,9 @@ export default createStore({
     }
   },
   actions: {
+    
+
+
     fetchListings: async (context) => {
       await fetch('https://bizniz-api.herokuapp.com/listings')
         .then(result => result.json())
@@ -30,10 +33,44 @@ export default createStore({
     },
 
 
-    fetchSingleListing: async (context, id) => {
-      await fetch(`https://bizniz-api.herokuapp.com/listings/${id}`)
+    fetchSingleListing: async (context, payload) => {
+      fetch('https://bizniz-api.herokuapp.com/listings/' + payload)
         .then(result => result.json())
-        .then((data) => context.commit('stateSingleListing', data.results))
+        .then((data) => context.commit('stateSingleListing', data.results[0]))
+    },
+
+
+    fetchUser: async (context, payload) => {
+      payload = context.state.user.id
+      fetch('https://bizniz-api.herokuapp.com/users/' + payload)
+        .then(result => result.json())
+        .then((data) => context.commit('stateUser', data.results[0]))
+    },
+
+    createListing(context, payload) {
+      console.log(payload);
+      fetch('https://bizniz-api.herokuapp.com/listings/listings',{
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers:{
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.msg == "Listing Added"){
+          swal({
+            icon:"success",
+            title:"Created Successfully",
+            text:"You may update this at a later stage",
+            buttons:"OK"
+          })
+          console.log(data.token)
+              console.log(data.user);
+              context.dispatch;
+              // context.dispatch("checkProfile")
+              console.log("Created")
+      }})
     },
 
 

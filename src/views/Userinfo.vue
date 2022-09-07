@@ -5,17 +5,17 @@
             <div v-if="listing">
                 <div id="container-floating">
                     <div class="nd4 nds"><img class="reminder">
-                        <a :href="listing[0].githubUrl" class="link" style="font-size:28px"><i class="bi bi-github">
+                        <a :href="listing.githubUrl" class="link" style="font-size:28px"><i class="bi bi-github">
                             </i></a>
                     </div>
 
                     <div class="nd3 nds"><img class="reminder">
-                        <a :href="listing[0].linkedinUrl" class="link" style="font-size:26px"><i
+                        <a :href="listing.linkedinUrl" class="link" style="font-size:26px"><i
                                 class="bi bi-linkedin"></i></a>
                     </div>
 
                     <div class="nd1 nds">
-                        <a :href="listing[0].projectLink" class="link" style="font-size:26px"><i
+                        <a :href="listing.projectLink" class="link" style="font-size:26px"><i
                                 class="bi bi-link"></i></a>
                     </div>
 
@@ -40,31 +40,31 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-5 mt-2 ">
                                                 <div class="input-field">
-                                                    <input name="name" id="name" type="text" class="validate">
+                                                    <input v-model="listingName" name="name" id="name" type="text" class="validate">
                                                     <label for="name">Name</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input name="About You" id="About You" type="text" class="validate">
+                                                    <input v-model="personDescription" name="About You" id="About You" type="text" class="validate">
                                                     <label for="About You">About You (20-100 words)</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input name="Image Url" id="Image Url" type="text" class="validate">
+                                                    <input v-model="listingUrl" name="Image Url" id="Image Url" type="text" class="validate">
                                                     <label for="Image Url">Image Url</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input name="Job Title" id="Job Title" type="text" class="validate">
+                                                    <input v-model="listingDescription" name="Job Title" id="Job Title" type="text" class="validate">
                                                     <label for="Job Title">Job Title</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-5 pt-2">
                                                 <div class="input-field">
-                                                    <input name="Speciality" id="Speciality" type="email"
+                                                    <input v-model="SpecialtyOption" name="Speciality" id="Speciality" type="text"
                                                         class="validate">
                                                     <label for="Speciality">Speciality</label>
                                                 </div>
@@ -72,27 +72,27 @@
                                             </div>
                                             <div class="col-lg-6 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input name="Github Link" id="Github Link" type="text"
+                                                    <input v-model="githubUrl" name="Github Link" id="Github Link" type="text"
                                                         class="validate">
                                                     <label for="Github Link">Github Link</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input name="LinkedIn link" id="LinkedIn link" type="text"
+                                                    <input v-model="linkedinUrl" name="LinkedIn link" id="LinkedIn link" type="text"
                                                         class="validate">
                                                     <label for="LinkedIn link">LinkedIn link</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input name="Project Link" id="Project Link" type="text"
+                                                    <input v-model="projectLink" name="Project Link" id="Project Link" type="text"
                                                         class="validate">
                                                     <label for="Project Link">Project Link</label>
                                                 </div>
                                             </div>
-                                           
-                                           
+
+
 
                                         </div>
                                     </div>
@@ -100,11 +100,19 @@
 
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-12 text-center pb-2">
+                                    <div class="col-sm-6 text-center pb-2">
+                                        <center>
+                                            <button type="button" @click="Addlisting"
+                                                class="btn waves-effect waves-light">Create</button>
+                                        </center>
+
+                                    </div>
+                                    <div class="col-sm-6 text-center pb-2">
                                         <center>
                                             <button type="submit" name="send"
                                                 class="btn waves-effect waves-light">Update</button>
                                         </center>
+
                                     </div>
 
                                 </div>
@@ -113,47 +121,99 @@
 
                     </div>
                     <div id="column1" class="col-md-6">
-                        <h1 style="color:teal;font-weight:bold">Changes will show here</h1>
+
+                        <div class="left-card">
+                            <div class="row">
+                                <div class="col-6"  style="border-right:solid 2px teal">
+                                    <img class="yrimg" :src="listing.listingUrl" alt="">
+                                </div>
+                                <div class="col-6 p-2 mt-5" >
+                                    <h4>{{ listing.listingName }}</h4>
+                                    
+                                    <h5>{{ listing.SpecialtyOption }} Web Developer</h5>
+                                    <br>
+                                    <div  style="border-bottom:solid 2px teal"></div>
+                                </div>
+                               
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col" style="overflow-y:scroll; height:150px">
+                                   <p>{{ listing.listingDescription }}
+                                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod, deleniti dolorum tempore mollitia magni quisquam explicabo voluptate nihil possimus debitis consequuntur, neque unde asperiores quis voluptatibus laboriosam ducimus molestiae beatae? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam harum aut dolore nesciunt autem exercitationem pariatur est. Incidunt quibusdam nostrum necessitatibus neque ut! Tempore harum incidunt, nobis ipsa pariatur eum.</p> 
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="links p-2">
+                                <h2 style="color:#A9E0DB;"><u>Your Links</u></h2>
+                                <ul class="text-start p-3">
+                                    <li>
+                                        <a :href="listing.githubUrl" class="link" style="font-size:16px;color:#A9E0DB"><i class="bi bi-github"></i>  {{listing.githubUrl}}</a>
+                                    </li>
+                                    <li>
+                                        <a :href="listing.linkedinUrl" class="link" style="font-size:16px;color:#A9E0DB"><i class="bi bi-linkedin"></i>  {{listing.linkedinUrl}}</a>
+                                    </li>
+                                    <li>
+                                        <a :href="listing.projectLink" class="link" style="font-size:16px;color:#A9E0DB"><i class="bi bi-link"></i>  {{listing.projectLink}}</a>
+                                    </li>
+                                </ul>
+                               
+                            </div>
+                        </div>
+
+                        <!-- <h1 style="color:teal;font-weight:bold">Changes will show here</h1>
                         <br>
                         <div class="card p-3 m-3 mx-auto" style="width: 300px;height: 400px;">
-                            <div class="back" id="test550" :style="`background: url(` + listing[0].listingUrl + `); background-repeat: no-repeat;background-size: cover; background-position: center;aspect-ratio:1/1; border:solid 7px teal;border-radius:10px`
+                            <div class="back" id="test550" :style="`background: url(` + listing.listingUrl + `); background-repeat: no-repeat;background-size: cover; background-position: center;aspect-ratio:1/1; border:solid 7px teal;border-radius:10px`
                             ">
 
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">{{ listing[0].listingName }}</h5>
+                                <h5 class="card-title">{{ listing.listingName }}</h5>
                                 <hr>
-                                {{ listing[0].listingDescription }}
-                                <br>Specialising in {{ listing[0].SpecialtyOption }}<p></p>
+                                {{ listing.listingDescription }}
+                                <br>Specialising in {{ listing.SpecialtyOption }}<p></p>
 
                             </div>
                         </div>
-<br>
-<br>
-<br>
+                        <br>
+                        <br>
+                        <br>
                         <div class="cardies">
                             <div class="content">
                                 <div class="front">
                                     <br><br>
                                     <h3 class="title text-white-50" style="color:white;">Press/Hover over me</h3>
 
-                                    <!-- <h4 class="subtitle">About {{listing[0].listingName}}</h4> -->
+                                    
                                 </div>
 
                                 <div class="back2">
-                                    <h4 class="description" style="font-family:'Times New Roman', Times, serif"><u>About you
-                                            </u></h4>
+                                    <h4 class="description" style="font-family:'Times New Roman', Times, serif"><u>About
+                                            you
+                                        </u></h4>
                                     <p class="description">
 
-                                        {{ listing[0].personDescription }}
+                                        {{ listing.personDescription }}
 
 
-                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque iure vel, ex laboriosam eos suscipit delectus fuga dolores reprehenderit, rerum nisi hic inventore exercitationem dicta provident ullam eaque. Praesentium, natus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis mollitia aliquid libero nemo dolores molestias nesciunt aspernatur, temporibus porro, quos quaerat dignissimos dolore a quam, animi numquam! Deleniti, quia molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quia omnis atque nihil recusandae. Officia eos eius voluptatum beatae? Ex saepe odit, et optio quod pariatur voluptas sapiente harum consequuntur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione soluta repellendus ducimus mollitia nam. Ipsam nemo magnam eum aut repudiandae consequuntur, laborum illo corrupti inventore cupiditate est excepturi mollitia eos?
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque iure vel, ex
+                                        laboriosam eos suscipit delectus fuga dolores reprehenderit, rerum nisi hic
+                                        inventore exercitationem dicta provident ullam eaque. Praesentium, natus! Lorem
+                                        ipsum dolor sit amet consectetur adipisicing elit. Quis mollitia aliquid libero
+                                        nemo dolores molestias nesciunt aspernatur, temporibus porro, quos quaerat
+                                        dignissimos dolore a quam, animi numquam! Deleniti, quia molestiae! Lorem ipsum
+                                        dolor sit amet consectetur adipisicing elit. Fugiat quia omnis atque nihil
+                                        recusandae. Officia eos eius voluptatum beatae? Ex saepe odit, et optio quod
+                                        pariatur voluptas sapiente harum consequuntur! Lorem ipsum dolor sit amet
+                                        consectetur adipisicing elit. Ratione soluta repellendus ducimus mollitia nam.
+                                        Ipsam nemo magnam eum aut repudiandae consequuntur, laborum illo corrupti
+                                        inventore cupiditate est excepturi mollitia eos?
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -174,6 +234,18 @@
 
 <script>
 export default {
+    data(){
+        return{
+             listingName: "", 
+             listingUrl:"", 
+             listingDescription:"", 
+             githubUrl:"", 
+             linkedinUrl:"",
+             projectLink:"", 
+             personDescription:"", 
+             SpecialtyOption:""
+        }
+    },
     mounted() {
         this.$store.dispatch('fetchSingleListing', this.$route.params.id)
     },
@@ -181,11 +253,54 @@ export default {
         listing() {
             return this.$store.state.listing
         }
+
+    },
+    methods:{
+        Addlisting(){
+            const payload = {
+                listingName: this.listingName, 
+                listingUrl: this.listingUrl, 
+                listingDescription: this.listingDescription, 
+                githubUrl: this.githubUrl, 
+                linkedinUrl: this.linkedinUrl,
+                projectLink: this.projectLink, 
+                personDescription: this.personDescription, 
+                SpecialtyOption: this.SpecialtyOption
+            }
+            this.$store.dispatch("createListing",payload)
+        }
+
     }
 }
 </script>
 
 <style scoped>
+.yrimg{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    object-fit: cover;
+    display: flex;
+    align-self: flex-start;
+    border-radius: 50%;
+    border: 8px solid teal;
+}
+
+
+.left-card{
+    background-color:  #18ac9e;
+    min-height: 80vh;
+    border: 8px solid teal;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+
+
+
+
 .back {
     height: 300px;
     display: flex;
@@ -321,7 +436,7 @@ export default {
     width: 550px;
     border-radius: 10px;
     height: 100%;
-
+    
 }
 
 
@@ -331,11 +446,11 @@ export default {
 
 
 label {
-    color: #fff;
+    color: teal;
 }
 
 input-field {
-    color: #fff;
+    color: teal;
 
 }
 
@@ -585,64 +700,63 @@ input-field {
 }
 
 .content {
-   width: 300px;
-  text-align: center;
-  position: relative;
-  transition: all 1.5s;
-  background-color: teal;
-  padding: 5em;
-  height: 250px;
-  border-radius: 10px;
- 
-  transform-style: preserve-3d;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    transition: all 1.5s;
+    background-color: teal;
+    padding: 5em;
+    height: 250px;
+    border-radius: 10px;
+
+    transform-style: preserve-3d;
 }
 
 .cardies:hover .content {
-  transform: rotateY(0.5turn);
+    transform: rotateY(0.5turn);
 }
 
 .front,
 .back2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  padding: 2em;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  height: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 2em;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    height: 250px;
 }
 
-.front{
-background-image: url("https://i.postimg.cc/XY5jcD7c/About-me-1024x404.png");
-background-size: contain;
-background-repeat: no-repeat;
-background-position: 0px 70px ;
-/* transform: scale(0.2); */
+.front {
+    background-image: url("https://i.postimg.cc/XY5jcD7c/About-me-1024x404.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0px 70px;
+    /* transform: scale(0.2); */
 
 
 }
 
 .title {
-  transform: translateZ(5rem);
-  font-size: 2rem;
+    transform: translateZ(5rem);
+    font-size: 2rem;
 }
 
 .subtitle {
-  transform: translateZ(2rem);
+    transform: translateZ(2rem);
 }
 
 .back2 {
-  transform: rotateY(0.5turn);
-  background-color: #fff;
-  color: black;
-  border: solid 7px teal;
-  border-radius: 10px;
-  overflow-y: scroll;
-  font-size: 14px;
-  /* padding: 30px; */
-  text-align: start;
+    transform: rotateY(0.5turn);
+    background-color: #fff;
+    color: black;
+    border: solid 7px teal;
+    border-radius: 10px;
+    overflow-y: scroll;
+    font-size: 14px;
+    /* padding: 30px; */
+    text-align: start;
 }
-
 </style>
