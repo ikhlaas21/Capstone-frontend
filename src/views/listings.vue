@@ -11,7 +11,7 @@
 
                     <div class="card-body">
                         <p class="card-text">
-                            <i class="bi bi-geo-alt-fill"></i>
+                            <i class="bi bi-info-circle"></i> More Info..
                         </p>
                         <hr>
                         {{ list.listingDescription }}

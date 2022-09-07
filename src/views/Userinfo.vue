@@ -102,15 +102,15 @@
                                 <div class="row">
                                     <div class="col-sm-6 text-center pb-2">
                                         <center>
-                                            <button type="button" @click="Addlisting"
-                                                class="btn waves-effect waves-light">Create</button>
+                                            <button type="button" @click="updatelisting"
+                                                class="btn waves-effect waves-light">Update</button>
                                         </center>
 
                                     </div>
                                     <div class="col-sm-6 text-center pb-2">
                                         <center>
                                             <button type="submit" name="send"
-                                                class="btn waves-effect waves-light">Update</button>
+                                                class="btn waves-effect waves-light">hmm</button>
                                         </center>
 
                                     </div>
@@ -139,8 +139,12 @@
                             <hr>
                             <div class="row">
                                 <div class="col" style="overflow-y:scroll; height:150px">
-                                   <p>{{ listing.listingDescription }}
-                                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod, deleniti dolorum tempore mollitia magni quisquam explicabo voluptate nihil possimus debitis consequuntur, neque unde asperiores quis voluptatibus laboriosam ducimus molestiae beatae? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam harum aut dolore nesciunt autem exercitationem pariatur est. Incidunt quibusdam nostrum necessitatibus neque ut! Tempore harum incidunt, nobis ipsa pariatur eum.</p> 
+                                   <h5><u>{{listing.listingDescription}}</u></h5> 
+                                
+                                   <p>{{ listing.personDescription }} 
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque necessitatibus deleniti sit vero quo ducimus magnam libero voluptas harum ipsum. Nulla vero tenetur neque repellat doloribus voluptate iure vel sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores fuga repellendus at veritatis inventore a dicta velit. Tempore labore magni iusto unde nobis doloremque eum reiciendis nam ad, ea adipisci!
+                                </p> 
+                                    
                                 </div>
                             </div>
                             <hr>
@@ -256,7 +260,7 @@ export default {
 
     },
     methods:{
-        Addlisting(){
+        updatelisting(){
             const payload = {
                 listingName: this.listingName, 
                 listingUrl: this.listingUrl, 
@@ -267,7 +271,8 @@ export default {
                 personDescription: this.personDescription, 
                 SpecialtyOption: this.SpecialtyOption
             }
-            this.$store.dispatch("createListing",payload)
+            this.$store.dispatch("updateListing",payload)
+            // this.$store.dispatch('fetchSingleListing', this.$route.params.id)
         }
 
     }

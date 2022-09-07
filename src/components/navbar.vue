@@ -14,10 +14,20 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-                        <router-link to="/">Home</router-link> 
-                        <router-link to="/listings">View Our Users</router-link>
-                        <router-link to="/userinfo">User Profile</router-link>
-                        <router-link to="/admin">Admin</router-link>
+                        <li>
+                            <router-link to="/">Home</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/listings">View Our Users</router-link>
+                        </li>
+                       <li>
+                        <router-link v-if="user" :to="{name:'userinfo', params:{id:this.$store.state.user.id}}">User Profile</router-link>
+                       </li>
+                       <li v-if="user">
+                        <router-link  v-if="user.usertype != 'user'" to="/admin">Admin</router-link>
+                       </li>
+                        
+                        
 
                     </ul>
                     <Footer></Footer>
@@ -60,12 +70,18 @@
     </div>
 </template>
 <script>
+import { computed } from '@vue/runtime-core';
    
 import Footer from './footer.vue';
 export default {
     components:{
     Footer,
   
+},
+computed:{
+user(){
+    return this.$store.state.user
+}
 }
 }
 </script>

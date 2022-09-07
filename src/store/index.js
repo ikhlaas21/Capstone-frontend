@@ -27,14 +27,14 @@ export default createStore({
 
 
     fetchListings: async (context) => {
-      await fetch('https://bizniz-api.herokuapp.com/listings')
+      await fetch('https://bizniz-api.herokuapp.com/listings/public/listings')
         .then(result => result.json())
         .then((data) => context.commit('stateListing', data.results))
     },
 
 
     fetchSingleListing: async (context, payload) => {
-      fetch('https://bizniz-api.herokuapp.com/listings/' + payload)
+      fetch('https://bizniz-api.herokuapp.com/listings/userlisting/' + payload)
         .then(result => result.json())
         .then((data) => context.commit('stateSingleListing', data.results[0]))
     },
@@ -47,10 +47,10 @@ export default createStore({
         .then((data) => context.commit('stateUser', data.results[0]))
     },
 
-    createListing(context, payload) {
+    updateListing(context, payload) {
       console.log(payload);
-      fetch('https://bizniz-api.herokuapp.com/listings/listings',{
-        method: 'POST',
+      fetch(`https://bizniz-api.herokuapp.com/listings/${context.state.user.id}`,{
+        method: 'PUT',
         body: JSON.stringify(payload),
         headers:{
           'Content-type': 'application/json; charset=UTF-8',
@@ -67,8 +67,7 @@ export default createStore({
           })
           console.log(data.token)
               console.log(data.user);
-              context.dispatch;
-              // context.dispatch("checkProfile")
+              context.dispatch("checkProfile")
               console.log("Created")
       }})
     },
@@ -109,7 +108,7 @@ export default createStore({
               console.log(data.token)
               console.log(data.user);
               context.commit("stateUser", data.user)
-              // context.dispatch("checkProfile")
+              context.dispatch("checkProfile")
               console.log("signed in")
             }
           }
@@ -118,11 +117,16 @@ export default createStore({
     },
 
 
-    // checkProfile(context){
-    //   fetch(`https://bizniz-api.herokuapp.com/listings/userlisting/${context.state.user.id}`)
-    //     .then(result => result.json())
-    //     .then((data) => console.log(data.results))
-    // },
+    checkProfile(context){
+      fetch(`https://bizniz-api.herokuapp.com/listings/public/listings/${context.state.user.id}`, {
+        method:'PUT',
+        headers:{
+          'Content-type':'application/json; charset=UTF-8'
+        }
+      })
+        .then(result => result.json())
+        .then((data) => console.log(data.results))
+    },
 
 
 
