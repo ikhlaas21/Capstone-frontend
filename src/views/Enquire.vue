@@ -93,7 +93,7 @@
                   <div class="col-lg-6 mt-2">
                     <div class="form-group">
                       <textarea name="comments" id="comments" rows="3" class="form-control border rounded"
-                        placeholder="Your Enquiry will be sent via admin..."></textarea>
+                        placeholder="Your Enquiry will be sent via admin...please mention the name of the person you have contacted."></textarea>
                     </div>
                   </div>
                 </div>

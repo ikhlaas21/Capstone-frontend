@@ -8,7 +8,8 @@ export default createStore({
   state: {
     listings: null,
     listing: null,
-    user: null
+    user: null,
+    users: null,
   },
   getters: {},
   mutations: {
@@ -20,6 +21,9 @@ export default createStore({
     },
     stateUser(state, user) {
       state.user = user
+    },
+    stateUsers(state,users) {
+      state.users = users
     }
   },
   actions: {
@@ -37,6 +41,12 @@ export default createStore({
       fetch('https://bizniz-api.herokuapp.com/listings/userlisting/' + payload)
         .then(result => result.json())
         .then((data) => context.commit('stateSingleListing', data.results[0]))
+    },
+
+    fetchUsers: async (context) => {
+      await fetch('https://bizniz-api.herokuapp.com/users/')
+      .then(result => result.json())
+      .then((data) => context.commit('stateUsers', data))
     },
 
 

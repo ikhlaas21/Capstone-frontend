@@ -3,12 +3,14 @@
     <div class="container-fluid">
       <div class="row">
         <div id="column1" class="col-md-6">
+          
           <h1>Welcome to CodeBricks!</h1>
           Sign up Today and register yourself as a Freelancer on our wall!
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, nobis voluptas? Qui cum perferendis voluptates quia officiis nam quos eos itaque, aperiam error quaerat rerum. Ipsum illum molestias temporibus ducimus.
           <br>
-          <img class="yrimg" src="https://i.postimg.cc/rmCTB1M4/codebricks.jpg" alt="">
+          <img class="yrimg img-fluid" src="https://i.postimg.cc/rmCTB1M4/codebricks.jpg" alt="">
           <div class="cardo">
-            <div class="cardo-img"><img src="https://i.postimg.cc/NMYsS5yW/IMG-1145.jpg" alt="">
+            <div class="cardo-img"><img class="img-fluid" src="https://i.postimg.cc/NMYsS5yW/IMG-1145.jpg" alt="">
             </div>
             <div class="cardo-info">
               <br>
@@ -156,7 +158,7 @@ export default {
 
 .yrimg{
     position: relative;
-    width: 350px;
+    width: 375px;
     height: 220px;
     background-size: cover;
     object-fit: cover;
@@ -339,4 +341,5 @@ img {
   font-weight: 400;
   font-style: italic;
 }
+
 </style>

@@ -1,7 +1,10 @@
 <template>
     <nav class="navbar navbar-dark sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="https://i.postimg.cc/MZrYVr8w/bricks-removebg-preview.png" alt="">
+            <a class="navbar-brand">
+            <router-link to="/">
+                    <img src="https://i.postimg.cc/MZrYVr8w/bricks-removebg-preview.png" alt="">
+                </router-link>
             </a>
             <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
                 aria-labelledby="offcanvasDarkNavbarLabel">
