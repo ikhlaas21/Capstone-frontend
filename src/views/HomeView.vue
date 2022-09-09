@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <div class="container-fluid">
+    <div id="home1" class="container-fluid">
       <div class="row">
-        <div id="column1" class="col-md-6">
+        <div id="column1" class="col-md">
           <h1>Welcome to CodeBricks!</h1>
           <img class="yrimg img-fluid" src="https://i.postimg.cc/rmCTB1M4/codebricks.jpg" alt="">
           <p class="mt-4">
@@ -11,7 +11,6 @@
           <br>
           <center>
             <h5 style="background-color:rgb(255,129,132); width:fit-content;"><u>Scroll for more info...</u></h5>
-
           </center>
           <div class="cardo">
             <div class="cardo-img"><img class="img-fluid" src="https://i.postimg.cc/NMYsS5yW/IMG-1145.jpg" alt="">
@@ -29,7 +28,7 @@
           </div>
         </div>
 
-        <div id="column2" class="col-md-6">
+        <div id="column2" class="col-md pt-5">
           <div id="con" class="container white z-depth-2">
             <ul class="teal">
               <li class="">
@@ -112,6 +111,114 @@
         </div>
       </div>
     </div>
+    <!-- <div id="home2" class="">
+      <div class="container pt-5">
+        <h1>Welcome to CodeBricks!</h1>
+        <img class="yrimg img-fluid" src="https://i.postimg.cc/rmCTB1M4/codebricks.jpg" alt="">
+            <p class="mt-4">
+            Sign up Today and register yourself as a Freelancer on our wall!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, nobis voluptas? Qui cum perferendis voluptates quia officiis nam quos eos itaque, aperiam error quaerat rerum. Ipsum illum molestias temporibus ducimus.</p>
+            
+            <div class="cardo">
+            <div class="cardo-img"><img class="img-fluid" src="https://i.postimg.cc/NMYsS5yW/IMG-1145.jpg" alt="">
+            </div>
+            <div class="cardo-info">
+              <h1>About Me</h1>
+              <p class="text-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellat,
+                consequuntur doloribus voluptate esse iure? Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Qui sequi, aliquam accusantium eius asperiores quod provident amet et quasi fuga doloribus debitis,
+                mollitia voluptates natus esse cumque vitae incidunt ea! Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Non explicabo repellendus corpori</p>
+              <p class="text-title">- Ikhlaas Rawoot</p>
+            </div>
+          </div>
+          <div id="con" class="container white z-depth-2">
+            <ul class="teal">
+              <li class="">
+                <h4> Getting Started..</h4>
+              </li>
+
+            </ul>
+            <div id="login" class="col ">
+              <form class="col ">
+                <div class="form-container">
+                  <h2 class="">Login</h2>
+                  <div class="row">
+                    <div class="input-field col ">
+                      <input v-model="logemail" id="email" type="email" class="validate">
+                      <label for="email">Email</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col ">
+                      <input v-model="loguserpassword" id="password" type="password" class="validate">
+                      <label for="password">Password</label>
+                    </div>
+                  </div>
+                  <br>
+                  <center>
+                    <button @click="login" class="btn waves-effect waves-light" type="button"
+                      name="action">Connect</button>
+                    
+                   
+                  </center>
+                </div>
+                <hr>
+              </form>
+            </div>
+
+            <div id="register" class="col ">
+              <form class="col">
+                <div class="form-container">
+                  <h2 class="">Register</h2>
+                  <div class="row">
+                    
+                    <div class="input-field col ">
+                      <input id="Fullname" v-model="fullname" type="text" class="validate">
+                      <label for="Fullname">Fullname</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col ">
+                      <input id="remail" type="email" v-model="email" class="validate">
+                      <label for="remail">Email</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col ">
+                      <input id="email-confirm" type="email" class="validate">
+                      <label for="email-confirm">Email Confirmation</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col ">
+                      <input id="rpassword" type="password" v-model="userpassword" class="validate">
+                      <label for="rpassword">Password</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col ">
+                      <input id="password-confirm" type="password" class="validate">
+                      <label for="password-confirm">Password Confirmation</label>
+                    </div>
+                  </div>
+                  <center>
+                    <button class="btn waves-effect waves-light" @click="register" type="button" name="action">Submit</button>
+                  </center>
+                </div>
+                <br>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div> -->
+
+
+
+
+
+
+
   </div>
 </template>
 
@@ -161,6 +268,34 @@ export default {
 
 <style scoped>
 
+/*  
+@media screen and (max-width:1005px){
+ #con{
+  width: 100px;
+ }
+
+}
+@media only screen and (max-width: 768px){
+	
+}
+@media only screen and (max-width: 430px){
+	
+}
+@media screen and (max-width: 376px){
+
+  .col-md {
+  padding: 0px;
+  height: 20vh;
+  overflow-x: hidden;
+  width: 754.3px;
+}
+
+}
+@media only screen and (max-width: 301px){
+
+  
+} */
+
 .yrimg{
     position: relative;
     width: 375px;
@@ -171,6 +306,7 @@ export default {
     align-self: flex-start; */
     border-radius:10px;
     border: 8px solid teal;
+    object-fit: cover;
 }
 
 hr{
@@ -208,7 +344,7 @@ h2{
   background-color: rgb(24, 172, 158);
 }
 
-.col-md-6 {
+.col-md {
   padding: 90px;
   height: 90vh;
   overflow-x: hidden;
