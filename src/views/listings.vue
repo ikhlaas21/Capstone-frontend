@@ -1,11 +1,11 @@
 <template>
     <div class="container-fluid" v-if="listings">
         <!-- filter stuff -->
-        <div class="row">
+        <div id="row1" class="row align-content-center">
             <div class="col-md-2">
                 <!-- search -->
                 <label for="" class="form-label">Search by Listing Name</label>
-                <input class="form-control" type="text" v-model="search">
+                <input placeholder="Search by Name.." style="background-color:#fff; border-radius:5px; border: solid 1px rgb(206,212,218); padding-left: 10px;" class="form-control" type="text" v-model="search">
             </div>
             <div class="col-md-2">
                 <!-- filter by full stack, back end , front end -->
@@ -13,7 +13,7 @@
                 <select class="form-select" v-model="specialty">
                     <option value="All" selected disabled>Filter by Specialty</option>
                     <option value="All">All</option>
-                    <option value="Full Stack">Full Stack</option>
+                    <option value="FullStack">FullStack</option>
                     <option value="Backend">Backend</option>
                     <option value="Frontend">Frontend</option>
                 </select>
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div id="row2" class="row">
             <div class="col-md-4" v-for="list in listings" :key="list.id">
                 <router-link :to="{name : 'enquire' , params : {id : list.id}}">
                     <div class="card p-3 m-3 mx-auto" style="width: 350px;">
@@ -74,8 +74,8 @@ export default {
         }
     },
     mounted() {
-        this.$store.dispatch('fetchListings'),
-            this.$store.commit('stateSingleListing', null)
+        this.$store.dispatch('fetchListings')
+           
     },
     computed: {
         // listings() {
@@ -84,9 +84,9 @@ export default {
         listings() {
             return this.$store.state.listings?.filter((listing) => {
              let isMatch = true
-            //  if (!listing.listingName.toLowerCase().includes(this.search)) {
-            //     isMatch = false
-            //  }
+             if (!listing.listingName.toLowerCase().includes(this.search)) {
+                isMatch = false
+             }
              if (this.specialty !== "All" && this.specialty !== listing.SpecialtyOption) {
                 isMatch = false
              }             
@@ -137,7 +137,22 @@ export default {
     padding: 0;
 }
 
-.row {
+.form-label{
+    color: teal;
+    background: #fff;
+    border-radius: 10px;
+    padding: 2px;
+
+}
+
+#row1{
+    padding-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#row2 {
     width: 100%;
     z-index: -50px;
 }

@@ -3,12 +3,16 @@
     <div class="container-fluid">
       <div class="row">
         <div id="column1" class="col-md-6">
-          
           <h1>Welcome to CodeBricks!</h1>
-          Sign up Today and register yourself as a Freelancer on our wall!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, nobis voluptas? Qui cum perferendis voluptates quia officiis nam quos eos itaque, aperiam error quaerat rerum. Ipsum illum molestias temporibus ducimus.
-          <br>
           <img class="yrimg img-fluid" src="https://i.postimg.cc/rmCTB1M4/codebricks.jpg" alt="">
+          <p class="mt-4">
+          Sign up Today and register yourself as a Freelancer on our wall!
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, nobis voluptas? Qui cum perferendis voluptates quia officiis nam quos eos itaque, aperiam error quaerat rerum. Ipsum illum molestias temporibus ducimus.</p>
+          <br>
+          <center>
+            <h5 style="background-color:rgb(255,129,132); width:fit-content;"><u>Scroll for more info...</u></h5>
+
+          </center>
           <div class="cardo">
             <div class="cardo-img"><img class="img-fluid" src="https://i.postimg.cc/NMYsS5yW/IMG-1145.jpg" alt="">
             </div>
@@ -147,6 +151,7 @@ export default {
         userpassword:this.userpassword
       }
       this.$store.dispatch("register",payload)
+     
     }
   }
 
@@ -180,6 +185,10 @@ hr{
 
 }
 
+h1{
+  font-weight:bolder;
+}
+
 h2{
   color: teal;
   text-decoration: underline;
@@ -207,7 +216,7 @@ h2{
 }
 
 #column1 {
-  padding-top: 160px;
+  padding-top: 100px;
   overflow-y: scroll;
   background-color: #fff;
   background-color: #fff;
@@ -312,12 +321,13 @@ img {
   /* --size: 200px;
   width: var(--size);
   height: var(--size); */
-  width: 185px;
+  width: 200px;
   height: 220px;
   border-radius: 10px;
   border: solid 8px teal;
   margin-top:20px;
-  background-size: contain;
+  object-fit: cover;
+  object-position: 0px 0px;
   /*transform: translateY(-50%);
  background: #42caff;
  background: linear-gradient(to bottom, #42caff 0%, #e81aff 100%);

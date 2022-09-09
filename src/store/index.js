@@ -10,6 +10,7 @@ export default createStore({
     listing: null,
     user: null,
     users: null,
+    existingUser: false
   },
   getters: {},
   mutations: {
@@ -24,23 +25,34 @@ export default createStore({
     },
     stateUsers(state,users) {
       state.users = users
+    },
+    setExistingUser(state,user){
+      state.existingUser = user
     }
+
   },
   actions: {
     
 
 
     fetchListings: async (context) => {
-      await fetch('https://bizniz-api.herokuapp.com/listings/public/listings')
+      await fetch('https://bizniz-api.herokuapp.com/listings')
         .then(result => result.json())
         .then((data) => context.commit('stateListing', data.results))
     },
 
 
     fetchSingleListing: async (context, payload) => {
-      fetch('https://bizniz-api.herokuapp.com/listings/userlisting/' + payload)
+      fetch('https://bizniz-api.herokuapp.com/listings/' + payload)
         .then(result => result.json())
-        .then((data) => context.commit('stateSingleListing', data.results[0]))
+        .then((data) => {
+          if(data.results.length > 0 ){
+            context.commit('setExistingUser', true)
+            context.commit('stateSingleListing', data.results[0])
+          }else{
+            context.commit('stateSingleListing', data.results[0])
+          }
+        })
     },
 
     fetchUsers: async (context) => {
@@ -71,6 +83,59 @@ export default createStore({
         if(data.msg == "Listing Added"){
           swal({
             icon:"success",
+            title:"Updated Successfully",
+            text:"You may update this at a later stage",
+            buttons:"OK"
+          })
+          console.log(data.token)
+              console.log(data.user);
+              context.dispatch("checkProfile")
+              console.log("Update")
+      }})
+    },
+
+
+    deleteUser(context, payload){
+      console.log(payload);
+      fetch(`https://bizniz-api.herokuapp.com/users/${context.state.user.id}`,{
+        method: 'DELETE',
+        body: JSON.stringify(payload),
+        headers:{
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.msg == "Deleted the user was"){
+          swal({
+            icon:"success",
+            title:"Deleted Successfully",
+            text:"Thanks",
+            buttons:"OK"
+          })
+          console.log(data.token)
+              console.log(data.user);
+              // context.dispatch("checkProfile")
+              console.log("Delete")
+      }})
+
+    },
+
+
+    createListing(context, payload) {
+      console.log(payload);
+      fetch(`https://bizniz-api.herokuapp.com/listings/listings`,{
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers:{
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.msg == "Listing Created"){
+          swal({
+            icon:"success",
             title:"Created Successfully",
             text:"You may update this at a later stage",
             buttons:"OK"
@@ -81,6 +146,7 @@ export default createStore({
               console.log("Created")
       }})
     },
+
 
 
     login(context, payload) {
@@ -118,7 +184,7 @@ export default createStore({
               console.log(data.token)
               console.log(data.user);
               context.commit("stateUser", data.user)
-              context.dispatch("checkProfile")
+              context.dispatch('fetchSingleListing', data.user.id)
               console.log("signed in")
             }
           }
@@ -127,16 +193,7 @@ export default createStore({
     },
 
 
-    checkProfile(context){
-      fetch(`https://bizniz-api.herokuapp.com/listings/public/listings/${context.state.user.id}`, {
-        method:'PUT',
-        headers:{
-          'Content-type':'application/json; charset=UTF-8'
-        }
-      })
-        .then(result => result.json())
-        .then((data) => console.log(data.results))
-    },
+    
 
 
 
@@ -166,7 +223,7 @@ export default createStore({
               buttons:"OK"
             });
             console.log(data)
-            context.commit("stateUser", data.results)
+            // context.commit("stateUser", data.results)
             console.log("Registered successfully")
           }
       

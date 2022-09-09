@@ -81,8 +81,8 @@ td, th { padding: 8px; padding: .5rem;
 th {
   text-align: left;
   font-weight: 300;
-  font-size: 25px;
-  font-size: 1.20rem;
+  font-size: 18px;
+  font-size: 1.12rem;
   border: 1px solid rgb(155, 41, 41);
   background-color: rgba(0, 128, 128, 0.351);
 }

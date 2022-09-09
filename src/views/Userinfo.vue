@@ -2,20 +2,20 @@
     <div class="userinfo">
         <div class="container-fluid">
 
-            <div v-if="listing">
+            <div>
                 <div id="container-floating">
                     <div class="nd4 nds"><img class="reminder">
-                        <a :href="listing.githubUrl" class="link" style="font-size:28px"><i class="bi bi-github">
+                        <a :href="githubUrl" target="blank" class="link" style="font-size:28px"><i class="bi bi-github">
                             </i></a>
                     </div>
 
                     <div class="nd3 nds"><img class="reminder">
-                        <a :href="listing.linkedinUrl" class="link" style="font-size:26px"><i
+                        <a :href="linkedinUrl" target="blank" class="link" style="font-size:26px"><i
                                 class="bi bi-linkedin"></i></a>
                     </div>
 
                     <div class="nd1 nds">
-                        <a :href="listing.projectLink" class="link" style="font-size:26px"><i
+                        <a :href="projectLink" target="blank" class="link" style="font-size:26px"><i
                                 class="bi bi-link"></i></a>
                     </div>
 
@@ -40,55 +40,61 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-5 mt-2 ">
                                                 <div class="input-field">
-                                                    <input v-model="listingName" name="name" id="name" type="text" class="validate">
-                                                    <label for="name">Name</label>
+                                                    <input v-model="listingName" name="name" id="name" type="text"
+                                                        class="validate">
+                                                    <label v-if="!listingName" for="name">Name</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input v-model="personDescription" name="About You" id="About You" type="text" class="validate">
-                                                    <label for="About You">About You (20-100 words)</label>
+                                                    <input v-model="personDescription" name="About You" id="About You"
+                                                        type="text" class="validate">
+                                                    <label v-if="!personDescription" for="About You">About You (20-100
+                                                        words)</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input v-model="listingUrl" name="Image Url" id="Image Url" type="text" class="validate">
-                                                    <label for="Image Url">Image Url</label>
+                                                    <input v-model="listingUrl" name="Image Url" id="Image Url"
+                                                        type="text" class="validate">
+                                                    <label v-if="!listingUrl" for="Image Url">Image Url</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input v-model="listingDescription" name="Job Title" id="Job Title" type="text" class="validate">
-                                                    <label for="Job Title">Job Title</label>
+                                                    <input v-model="listingDescription" name="Job Title" id="Job Title"
+                                                        type="text" class="validate">
+                                                    <label v-if="!listingDescription" for="Job Title">Job Title</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-5 pt-2">
                                                 <div class="input-field">
-                                                    <input v-model="SpecialtyOption" name="Speciality" id="Speciality" type="text"
-                                                        class="validate">
-                                                    <label for="Speciality">Speciality</label>
+                                                    <input v-model="SpecialtyOption" name="Speciality" id="Speciality"
+                                                        type="text" class="validate">
+                                                    <label v-if="!SpecialtyOption"
+                                                        for="Speciality">FullStack/Frontend/Backend</label>
                                                 </div>
 
                                             </div>
                                             <div class="col-lg-6 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input v-model="githubUrl" name="Github Link" id="Github Link" type="text"
-                                                        class="validate">
-                                                    <label for="Github Link">Github Link</label>
+                                                    <input v-model="githubUrl" name="Github Link" id="Github Link"
+                                                        type="text" class="validate">
+                                                    <label v-if="!githubUrl" for="Github Link">Github Link</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input v-model="linkedinUrl" name="LinkedIn link" id="LinkedIn link" type="text"
-                                                        class="validate">
-                                                    <label for="LinkedIn link">LinkedIn link</label>
+                                                    <input v-model="linkedinUrl" name="LinkedIn link" id="LinkedIn link"
+                                                        type="text" class="validate">
+                                                    <label v-if="!linkedinUrl" for="LinkedIn link">LinkedIn link</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-5 mt-2">
                                                 <div class="input-field">
-                                                    <input v-model="projectLink" name="Project Link" id="Project Link" type="text"
-                                                        class="validate">
-                                                    <label for="Project Link">Project Link</label>
+                                                    <input v-model="projectLink" name="Project Link" id="Project Link"
+                                                        type="text" class="validate">
+                                                    <label v-if="!projectLink" for="Project Link">Project Link</label>
                                                 </div>
                                             </div>
 
@@ -109,8 +115,8 @@
                                     </div>
                                     <div class="col-sm-6 text-center pb-2">
                                         <center>
-                                            <button type="submit" name="send"
-                                                class="btn waves-effect waves-light">hmm</button>
+                                            <button v-if="!existingUser" type="submit" @click="createlisting"
+                                                name="send" class="btn waves-effect waves-light">Create</button>
                                         </center>
 
                                     </div>
@@ -124,27 +130,27 @@
 
                         <div class="left-card">
                             <div class="row">
-                                <div class="col-6"  style="border-right:solid 2px teal">
-                                    <img class="yrimg" :src="listing.listingUrl" alt="">
+                                <div class="col-6" style="border-right:solid 2px teal">
+                                    <img class="yrimg" :src="listingUrl">
                                 </div>
-                                <div class="col-6 p-2 mt-5" >
-                                    <h4>{{ listing.listingName }}</h4>
-                                    
-                                    <h5>{{ listing.SpecialtyOption }} Web Developer</h5>
+                                <div class="col-6 p-2 mt-5">
+                                    <h4>{{ listingName }}</h4>
+
+                                    <h5>{{ SpecialtyOption }} Web Developer</h5>
                                     <br>
-                                    <div  style="border-bottom:solid 2px teal"></div>
+                                    <div style="border-bottom:solid 2px teal"></div>
                                 </div>
-                               
+
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col" style="overflow-y:scroll; height:150px">
-                                   <h5><u>{{listing.listingDescription}}</u></h5> 
-                                
-                                   <p>{{ listing.personDescription }} 
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque necessitatibus deleniti sit vero quo ducimus magnam libero voluptas harum ipsum. Nulla vero tenetur neque repellat doloribus voluptate iure vel sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores fuga repellendus at veritatis inventore a dicta velit. Tempore labore magni iusto unde nobis doloremque eum reiciendis nam ad, ea adipisci!
-                                </p> 
-                                    
+                                    <h5><u>{{listingDescription}}</u></h5>
+
+                                    <p>{{ personDescription }}
+
+                                    </p>
+
                                 </div>
                             </div>
                             <hr>
@@ -152,17 +158,31 @@
                                 <h2 style="color:#A9E0DB;"><u>Your Links</u></h2>
                                 <ul class="text-start p-3">
                                     <li>
-                                        <a :href="listing.githubUrl" class="link" style="font-size:16px;color:#A9E0DB"><i class="bi bi-github"></i>  {{listing.githubUrl}}</a>
+                                        <a :href="githubUrl" target="blank" class="link"
+                                            style="font-size:16px;color:#A9E0DB"><i class="bi bi-github"></i>
+                                            {{githubUrl}}</a>
                                     </li>
                                     <li>
-                                        <a :href="listing.linkedinUrl" class="link" style="font-size:16px;color:#A9E0DB"><i class="bi bi-linkedin"></i>  {{listing.linkedinUrl}}</a>
+                                        <a :href="linkedinUrl" target="blank" class="link"
+                                            style="font-size:16px;color:#A9E0DB"><i class="bi bi-linkedin"></i>
+                                            {{linkedinUrl}}</a>
                                     </li>
                                     <li>
-                                        <a :href="listing.projectLink" class="link" style="font-size:16px;color:#A9E0DB"><i class="bi bi-link"></i>  {{listing.projectLink}}</a>
+                                        <a :href="projectLink" target="blank" class="link"
+                                            style="font-size:16px;color:#A9E0DB"><i class="bi bi-link"></i>
+                                            {{projectLink}}</a>
                                     </li>
                                 </ul>
-                               
+
                             </div>
+                            
+                            <div>
+                                <center>
+                                    <button data-bs-toggle="modal" data-bs-target="#deleteModal" type="button" name="send"
+                                        class="btn waves-effect waves-light">Delete Account</button>
+                                </center>
+                            </div>
+                            <br>
                         </div>
 
                         <!-- <h1 style="color:teal;font-weight:bold">Changes will show here</h1>
@@ -224,63 +244,99 @@
                 </div>
             </div>
 
-            <div v-else>
+            <!-- <div v-else>
                 <div class="spinner">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </div>
+    <modal :user="existingUser"/>
 </template>
 
 <script>
+    import modal from "../components/deletemodal.vue"
 export default {
-    data(){
-        return{
-             listingName: "", 
-             listingUrl:"", 
-             listingDescription:"", 
-             githubUrl:"", 
-             linkedinUrl:"",
-             projectLink:"", 
-             personDescription:"", 
-             SpecialtyOption:""
+    components:{
+        modal
+    },
+
+
+    data() {
+        return {
+            listingName: "",
+            listingUrl: "",
+            listingDescription: "",
+            githubUrl: "",
+            linkedinUrl: "",
+            projectLink: "",
+            personDescription: "",
+            SpecialtyOption: ""
         }
     },
     mounted() {
-        this.$store.dispatch('fetchSingleListing', this.$route.params.id)
+        if (this.listing) {
+            this.listingName = this.listing.listingName
+            this.listingUrl = this.listing.listingUrl,
+                this.listingDescription = this.listing.listingDescription,
+                this.githubUrl = this.listing.githubUrl,
+                this.linkedinUrl = this.listing.linkedinUrl,
+                this.projectLink = this.listing.projectLink,
+                this.personDescription = this.listing.personDescription,
+                this.SpecialtyOption = this.listing.SpecialtyOption
+        }
     },
     computed: {
         listing() {
             return this.$store.state.listing
+
+        },
+        existingUser() {
+            return this.$store.state.existingUser
         }
 
     },
-    methods:{
-        updatelisting(){
+    methods: {
+        updatelisting() {
             const payload = {
-                listingName: this.listingName, 
-                listingUrl: this.listingUrl, 
-                listingDescription: this.listingDescription, 
-                githubUrl: this.githubUrl, 
+                listingName: this.listingName,
+                listingUrl: this.listingUrl,
+                listingDescription: this.listingDescription,
+                githubUrl: this.githubUrl,
                 linkedinUrl: this.linkedinUrl,
-                projectLink: this.projectLink, 
-                personDescription: this.personDescription, 
+                projectLink: this.projectLink,
+                personDescription: this.personDescription,
                 SpecialtyOption: this.SpecialtyOption
             }
-            this.$store.dispatch("updateListing",payload)
+            this.$store.dispatch("updateListing", payload)
             // this.$store.dispatch('fetchSingleListing', this.$route.params.id)
-        }
+        },
+        createlisting() {
+            const payload = {
+                listingName: this.listingName,
+                listingUrl: this.listingUrl,
+                listingDescription: this.listingDescription,
+                githubUrl: this.githubUrl,
+                linkedinUrl: this.linkedinUrl,
+                projectLink: this.projectLink,
+                personDescription: this.personDescription,
+                SpecialtyOption: this.SpecialtyOption
+            }
+            this.$store.dispatch("createListing", payload)
+            // this.$store.dispatch('fetchSingleListing', this.$route.params.id)
+        },
+
+
 
     }
 }
 </script>
 
 <style scoped>
-.yrimg{
+.yrimg {
     position: relative;
     width: 200px;
     height: 200px;
@@ -293,8 +349,8 @@ export default {
 }
 
 
-.left-card{
-    background-color:  #18ac9e;
+.left-card {
+    background-color: #18ac9e;
     min-height: 80vh;
     border: 8px solid teal;
     border-radius: 10px;
@@ -441,7 +497,7 @@ export default {
     width: 550px;
     border-radius: 10px;
     height: 100%;
-    
+
 }
 
 

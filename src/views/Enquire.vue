@@ -5,15 +5,15 @@
       <div v-if="listing">
         <div id="container-floating">
           <div class="nd4 nds"><img class="reminder">
-            <a :href="listing.githubUrl" class="link" style="font-size:28px"><i class="bi bi-github"> </i></a>
+            <a :href="listing.githubUrl" target="blank" class="link" style="font-size:28px"><i class="bi bi-github"> </i></a>
           </div>
     
           <div class="nd3 nds"><img class="reminder">
-            <a :href="listing.linkedinUrl" class="link" style="font-size:26px"><i class="bi bi-linkedin"></i></a>
+            <a :href="listing.linkedinUrl" target="blank" class="link" style="font-size:26px"><i class="bi bi-linkedin"></i></a>
           </div>
     
           <div class="nd1 nds">
-            <a :href="listing.projectLink" class="link" style="font-size:26px"><i class="bi bi-link"></i></a>
+            <a :href="listing.projectLink" target="blank" class="link" style="font-size:26px"><i class="bi bi-link"></i></a>
           </div>
     
           <div id="floating-button">

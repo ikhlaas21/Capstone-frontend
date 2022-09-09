@@ -24,7 +24,9 @@ const routes = [{
   {
   path: '/userinfo/:id',
   name: 'userinfo',
-  component: () => import( /* webpackChunkName: "about" */ '../views/Userinfo.vue')
+  component: () => import( /* webpackChunkName: "about" */ '../views/Userinfo.vue'),
+ 
+
 },
 {
   path: '/admin',
