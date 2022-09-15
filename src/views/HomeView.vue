@@ -5,9 +5,9 @@
         <div id="column1" class="col-md-6">
           <h1>Welcome to CodeBricks!</h1>
           <img class="yrimg img-fluid" src="https://i.postimg.cc/rmCTB1M4/codebricks.jpg" alt="">
-          <p class="mt-4">
+          <p class="mt-4"> CodeBricks is a Website I designed and created using Vue.js, Node.js, Express.js, JavaScript, MySql, Bootstrap, HTML and CSS. The aim of my website is to create a platform for up and coming Web Developers to Promote themselves and their work.
           Sign up Today and register yourself as a Freelancer on our wall!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, nobis voluptas? Qui cum perferendis voluptates quia officiis nam quos eos itaque, aperiam error quaerat rerum. Ipsum illum molestias temporibus ducimus.</p>
+          </p>
           <br>
           <center>
             <h5 style="background-color:rgb(255,129,132); width:fit-content;"><u>Scroll for more info...</u></h5>
@@ -19,11 +19,7 @@
             <div class="cardo-info">
               <br>
               <h1>About Me</h1>
-              <p class="text-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellat,
-                consequuntur doloribus voluptate esse iure? Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Qui sequi, aliquam accusantium eius asperiores quod provident amet et quasi fuga doloribus debitis,
-                mollitia voluptates natus esse cumque vitae incidunt ea! Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Non explicabo repellendus corpori</p>
+              <p class="text-body">I enjoy the company of others and have excellent teamwork skills. Although I am a team player, I also have the ability to take the lead when necessary. I see failure as a lesson learnt and never shy from trying again. I would like to think that I am resilient and hardworking. I am extremely passionate about modern technology and have recently started a 3D printing business with my brother. In 3D printing, there is a lot of trial and error. In order to be successful in this field, one needs to be patient and show perseverance.</p>
               <p class="text-title">- Ikhlaas Rawoot</p>
             </div>
           </div>
@@ -43,13 +39,13 @@
                   <h2 class="">Login</h2>
                   <div class="row">
                     <div class="input-field col ">
-                      <input v-model="logemail" id="email" type="email" class="validate">
+                      <input v-model="logemail" id="email" type="email" class="validate" required>
                       <label for="email">Email</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col ">
-                      <input v-model="loguserpassword" id="password" type="password" class="validate">
+                      <input v-model="loguserpassword" id="password" type="password" class="validate" required>
                       <label for="password">Password</label>
                     </div>
                   </div>
@@ -73,31 +69,31 @@
                   <div class="row">
                     
                     <div class="input-field col ">
-                      <input id="Fullname" v-model="fullname" type="text" class="validate">
+                      <input id="Fullname" v-model="fullname" type="text" class="validate" required>
                       <label for="Fullname">Fullname</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col ">
-                      <input id="remail" type="email" v-model="email" class="validate">
+                      <input id="remail" type="email" v-model="email" class="validate" required>
                       <label for="remail">Email</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col ">
-                      <input id="email-confirm" type="email" class="validate">
+                      <input id="email-confirm" type="email" class="validate" required>
                       <label for="email-confirm">Email Confirmation</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col ">
-                      <input id="rpassword" type="password" v-model="userpassword" class="validate">
+                      <input id="rpassword" type="password" v-model="userpassword" class="validate" required>
                       <label for="rpassword">Password</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col ">
-                      <input id="password-confirm" type="password" class="validate">
+                      <input id="password-confirm" type="password" class="validate" required>
                       <label for="password-confirm">Password Confirmation</label>
                     </div>
                   </div>
