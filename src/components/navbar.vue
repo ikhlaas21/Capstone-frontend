@@ -44,12 +44,12 @@
                     <span  class=""><i class="bi bi-map" style="font-size:20px ;"> Navbar</i></span>
                 </button>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class=""><i class="bi bi-envelope-open" style="font-size:20px; ;"> Enquiries</i></span>
-                </button>
+                </button> -->
             </div>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+            <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Enquiries</h5>
@@ -65,7 +65,7 @@
                     </ul>
 
                 </div>
-            </div>
+            </div> -->
         </div>
     </nav>
     <div class="lowernav">
